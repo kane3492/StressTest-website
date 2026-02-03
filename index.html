@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StressTest</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      height: 100vh;
+      background: url('assets/stresstest-wallpaper.png') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* --- LOGO ANIMATION --- */
+    .hover-scale {
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .hover-scale:hover {
+      transform: scale(1.03);
+    }
+
+    /* --- SHARED GLASS STYLES --- */
+    .glass-finish {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2), /* Deeper shadow for pop */
+        inset 0 1px 0 rgba(255, 255, 255, 0.25); /* Top highlight "lip" */
+    }
+
+    /* --- BUTTONS --- */
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.85rem 2rem;
+      font-weight: 600;
+      border-radius: 1rem;
+      border-width: 3px;
+      border-style: solid;
+      transition: all 0.3s ease;
+      color: #fff;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      margin-top: 1.5rem; /* Add spacing specifically above buttons now that main gap is gone */
+    }
+
+    .button::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.05) 100%);
+      pointer-events: none;
+    }
+
+    .button:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+    }
+
+    /* Instagram: Blue tint */
+    .instagram-btn {
+      background-color: rgba(41, 85, 131, 0.65); 
+      border-color: #211053; 
+    }
+
+    /* Email: Red tint */
+    .email-btn {
+      background-color: rgba(201, 102, 95, 0.65);
+      border-color: #672847;
+    }
+
+    /* --- CENTER PANEL --- */
+    .glass-panel {
+      /* Increased opacity slightly for better text readability */
+      background: rgba(41, 85, 131, 0.35); 
+      
+      /* CHANGED: Border is now a subtle, lighter version of the blue accent 
+         instead of the dark solid navy. This reduces contrast. */
+      border: 2px solid rgba(41, 85, 131, 0.4);
+      
+      border-radius: 1.25rem;
+      padding: 1.5rem 2rem;
+      max-width: 90%;
+      width: 480px;
+      position: relative;
+      
+      /* CHANGED: Negative margin to pull the box up into the logo's space */
+      margin-top: -2rem; 
+      z-index: 10; /* Ensures it sits nicely if overlap occurs */
+    }
+
+    /* Gradient overlay for sheen */
+    .glass-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 1.25rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 60%);
+      pointer-events: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <main class="text-center flex flex-col items-center gap-0">
+
+    <img src="assets/stresstest-logo.png" alt="StressTest Logo" 
+         class="w-64 h-64 md:w-96 md:h-96 lg:w-[700px] lg:h-[375px] object-contain hover-scale z-0">
+
+    <div class="glass-panel glass-finish text-white">
+      <h2 class="text-xl md:text-2xl font-bold mb-2 tracking-wide uppercase drop-shadow-md">An In-Motion, Modular Production Company.</h2>
+      <p class="text-sm md:text-base font-light opacity-95 leading-relaxed text-blue-50 drop-shadow-sm">
+        No fixed roots. An alternative title which presents itself to experiment under; with no set mode, medium or position. Exploratory, speculative, and indulgent in the very idea of ideas.
+      </p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+      <a href="https://www.instagram.com/art.stresstest/" target="_blank" class="button instagram-btn glass-finish">
+        Instagram
+      </a>
+      <a href="mailto:contact@stresstest.uk" class="button email-btn glass-finish">
+        Email
+      </a>
+    </div>
+
+  </main>
+
+</body>
+</html>
