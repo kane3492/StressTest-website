@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StressTest</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+background:
+radial-gradient(circle at 15% 20%, rgba(255,138,61,0.18), transparent 40%),
+radial-gradient(circle at 85% 80%, rgba(122,92,255,0.20), transparent 45%),
+radial-gradient(circle at 60% 40%, rgba(61,209,201,0.18), transparent 45%),
+linear-gradient(135deg,#14141c,#1b1b2a,#1e2233);
+overflow:hidden;
+}
+
+/* soft ambient shapes */
+.shape{
+position:absolute;
+filter:blur(120px);
+opacity:.35;
+animation:float 22s ease-in-out infinite;
+}
+
+.shape1{
+width:520px;
+height:520px;
+background:#ff8a3d;
+top:-180px;
+left:-120px;
+}
+
+.shape2{
+width:460px;
+height:460px;
+background:#7a5cff;
+bottom:-160px;
+right:-120px;
+animation-delay:6s;
+}
+
+.shape3{
+width:420px;
+height:420px;
+background:#3dd1c9;
+top:50%;
+left:55%;
+animation-delay:12s;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0px) translateX(0px)}
+50%{transform:translateY(-30px) translateX(25px)}
+}
+
+.logo{
+transition:transform .6s ease, filter .6s ease;
+}
+
+.logo:hover{
+transform:scale(1.05);
+filter:drop-shadow(0 25px 50px rgba(0,0,0,.35));
+}
+
+.contact-btn{
+transition:all .35s ease;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.25);
+backdrop-filter:blur(8px);
+}
+
+.contact-btn:hover{
+transform:translateY(-3px) scale(1.04);
+background:white;
+color:black;
+box-shadow:0 12px 40px rgba(0,0,0,.35);
+}
+
+</style>
+
+</head>
+
+<body class="min-h-screen flex items-center justify-center font-sans text-white">
+
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+
+<div class="text-center px-6 relative z-10">
+
+<img src="assets/stresstestlogo.png" class="logo mx-auto w-[420px] max-w-full mb-14" />
+
+<a href="mailto:contact@stresstest.uk" class="contact-btn inline-block px-10 py-4 rounded-2xl text-sm tracking-widest font-semibold">
+CONTACT
+</a>
+
+</div>
+
+</body>
+</html>
