@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's On — StressTest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange: #f97c2b;
+    --pink: #d4607a;
+    --purple: #7b5ea7;
+    --teal: #7dd4d4;
+    --dark: #0d0a12;
+    --glass-bg: rgba(255,255,255,0.06);
+    --glass-border: rgba(255,255,255,0.12);
+    --glass-blur: blur(24px);
+  }
+
+  html, body {
+    width: 100%; min-height: 100%;
+    background-color: var(--dark);
+    background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* — Page layout — */
+  .site {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center;
+    padding: 48px 24px 80px;
+    gap: 48px;
+  }
+
+  /* — Header — */
+  .header {
+    width: 100%; max-width: 900px;
+    display: flex; align-items: center; justify-content: space-between;
+    animation: fadeUp 0.9s 0s cubic-bezier(.16,1,.3,1) both;
+  }
+
+  .header-logo img {
+    height: 36px;
+    width: auto;
+    display: block;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+  }
+  .header-logo img:hover { opacity: 1; }
+
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .header-divider {
+    width: 100%; max-width: 900px; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+    animation: fadeUp 0.9s 0.1s cubic-bezier(.16,1,.3,1) both;
+  }
+
+  /* — Show list — */
+  .show-list {
+    width: 100%; max-width: 900px;
+    display: flex; flex-direction: column; gap: 32px;
+  }
+
+  /* =============================================
+     SHOW CARD — copy/paste this whole block
+     to add a new show
+     ============================================= */
+  .show-card {
+    display: flex; gap: 32px; align-items: flex-start;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 28px;
+    animation: fadeUp 0.9s cubic-bezier(.16,1,.3,1) both;
+    transition: border-color 0.3s;
+  }
+  .show-card:hover { border-color: rgba(255,255,255,0.22); }
+
+  /* Poster — A4 ratio (1:1.414) */
+  .show-poster {
+    flex-shrink: 0;
+    width: 180px;
+    aspect-ratio: 1 / 1.414;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border);
+  }
+  .show-poster img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+
+  /* Info */
+  .show-info {
+    flex: 1;
+    display: flex; flex-direction: column;
+    gap: 12px; justify-content: center;
+  }
+
+  .show-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.9rem;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    color: #fff;
+  }
+
+  .show-credits {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .show-description {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* Tickets button */
+  .btn-tickets {
+    align-self: flex-start;
+    margin-top: 8px;
+    position: relative;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 28px;
+    border-radius: 100px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #f97c2b, #d4607a);
+    color: #fff;
+    border: none; outline: none;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(249,124,43,0.3), 0 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s ease;
+  }
+  .btn-tickets:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 12px 36px rgba(249,124,43,0.5), 0 4px 12px rgba(0,0,0,0.4);
+  }
+  .btn-tickets:active { transform: translateY(0) scale(0.98); }
+
+  /* Back button */
+  .btn-back {
+    position: relative;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 28px;
+    border-radius: 100px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    background: var(--glass-bg);
+    color: #fff;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), background 0.2s, border-color 0.2s;
+  }
+  .btn-back:hover {
+    transform: translateY(-2px) scale(1.03);
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.2);
+  }
+  .btn-back:active { transform: translateY(0) scale(0.98); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px) {
+    .show-card { flex-direction: column; }
+    .show-poster { width: 100%; max-width: 200px; }
+    .header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<main class="site">
+
+  <div class="header">
+    <a href="/index.html" class="header-logo">
+      <img src="/assets/stresstestlogo.png" alt="StressTest">
+    </a>
+    <span class="page-title">What's On</span>
+    <a href="/index.html" class="btn-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      Back
+    </a>
+  </div>
+
+  <div class="header-divider"></div>
+
+  <div class="show-list">
+
+    <!-- =============================================
+         SHOW CARD — copy/paste from here...
+         ============================================= -->
+    <div class="show-card">
+      <div class="show-poster">
+        <img src="/assets/POSTER1.png" alt="Show poster">
+      </div>
+      <div class="show-info">
+        <div class="show-title">DO ANTS DESERVE TO LIVE FOREVER?</div>
+        <div class="show-credits">Written by Kane Heath &nbsp;·&nbsp; Directed by John Doe</div>
+        <p class="show-description">
+          What does it mean that we are here together? A show about all sorts of connection and how the human experience shapes the ways we interact with the world.
+        </p>
+        <a href="/oops.html" class="btn-tickets">Coming Soon...</a>
+      </div>
+    </div>
+    <!-- ...to here -->
+
+  </div>
+
+</main>
+
+</body>
+</html>
