@@ -230,6 +230,7 @@
   }
 
   .prev-poster {
+    display: block;
     width: 100%;
     aspect-ratio: 1 / 1.414;
     border-radius: 8px;
@@ -237,6 +238,7 @@
     background: rgba(255,255,255,0.05);
     border: 1px solid var(--glass-border);
     transition: border-color 0.3s, transform 0.3s ease;
+    text-decoration: none;
   }
   .prev-poster img {
     width: 100%; height: 100%;
@@ -246,6 +248,9 @@
   .prev-card:hover .prev-poster {
     border-color: rgba(255,255,255,0.22);
     transform: translateY(-3px);
+  }
+  .prev-card:hover .prev-poster img {
+    transform: scale(1.03);
   }
 
   .prev-title {
@@ -326,7 +331,6 @@
   </div>
 
   <div class="section-divider"></div>
-
   <div class="section-heading">Previous Work</div>
 
   <div class="prev-grid">
@@ -335,10 +339,10 @@
          PREVIOUS WORK CARD — copy/paste from here...
          ============================================= -->
     <div class="prev-card">
-      <div class="prev-poster">
+      <a href="/WELCOMETOTHENEST.html" class="prev-poster">
         <img src="/assets/PREV1.png" alt="Show poster">
-      </div>
-      <div class="prev-title">Welcome To The Nest (Staged Reading)</div>
+      </a>
+      <div class="prev-title">Welcome To The Nest (Rehearsed Reading)</div>
       <div class="prev-credits">Written by Kane Heath<br>Directed by Lucy Sellers</div>
     </div>
     <!-- ...to here -->
