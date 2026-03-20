@@ -198,6 +198,73 @@
   }
   .btn-back:active { transform: translateY(0) scale(0.98); }
 
+  /* — Section separator — */
+  .section-divider {
+    width: 100%; max-width: 900px; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+  }
+
+  .section-heading {
+    width: 100%; max-width: 900px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* — Previous work grid — */
+  .prev-grid {
+    width: 100%; max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+  }
+
+  /* =============================================
+     PREVIOUS WORK CARD — copy/paste this block
+     to add another past show
+     ============================================= */
+  .prev-card {
+    display: flex; flex-direction: column; gap: 12px;
+    animation: fadeUp 0.9s cubic-bezier(.16,1,.3,1) both;
+  }
+
+  .prev-poster {
+    width: 100%;
+    aspect-ratio: 1 / 1.414;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border);
+    transition: border-color 0.3s, transform 0.3s ease;
+  }
+  .prev-poster img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.4s ease;
+  }
+  .prev-card:hover .prev-poster {
+    border-color: rgba(255,255,255,0.22);
+    transform: translateY(-3px);
+  }
+
+  .prev-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    color: #fff;
+  }
+
+  .prev-credits {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.5;
+  }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -253,6 +320,26 @@
         </p>
         <a href="/oops.html" class="btn-tickets">Coming Soon...</a>
       </div>
+    </div>
+    <!-- ...to here -->
+
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="section-heading">Previous Work</div>
+
+  <div class="prev-grid">
+
+    <!-- =============================================
+         PREVIOUS WORK CARD — copy/paste from here...
+         ============================================= -->
+    <div class="prev-card">
+      <div class="prev-poster">
+        <img src="/assets/PREV1.png" alt="Show poster">
+      </div>
+      <div class="prev-title">Title of Show</div>
+      <div class="prev-credits">Written by John Doe<br>Directed by John Doe</div>
     </div>
     <!-- ...to here -->
 
