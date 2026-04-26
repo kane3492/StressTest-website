@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What's On — StressTest</title>
+
+<!-- ============================================================
+     EDIT THIS: Change the title to match the show
+     ============================================================ -->
+<title>Title of Show — StressTest</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
@@ -13,7 +18,6 @@
     --orange: #f97c2b;
     --pink: #d4607a;
     --purple: #7b5ea7;
-    --teal: #7dd4d4;
     --dark: #0d0a12;
     --glass-bg: rgba(255,255,255,0.06);
     --glass-border: rgba(255,255,255,0.12);
@@ -30,7 +34,6 @@
     overflow-x: hidden;
   }
 
-  /* — Page layout — */
   .site {
     min-height: 100vh;
     display: flex; flex-direction: column;
@@ -45,22 +48,11 @@
     display: flex; align-items: center; justify-content: space-between;
     animation: fadeUp 0.9s 0s cubic-bezier(.16,1,.3,1) both;
   }
-
   .header-logo img {
-    height: 36px;
-    width: auto;
-    display: block;
-    opacity: 0.9;
-    transition: opacity 0.3s;
+    height: 36px; width: auto; display: block;
+    opacity: 0.9; transition: opacity 0.3s;
   }
   .header-logo img:hover { opacity: 1; }
-
-  .page-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.9);
-  }
 
   .header-divider {
     width: 100%; max-width: 900px; height: 1px;
@@ -68,52 +60,38 @@
     animation: fadeUp 0.9s 0.1s cubic-bezier(.16,1,.3,1) both;
   }
 
-  /* — Show list — */
-  .show-list {
+  /* — Hero section: poster + info — */
+  .hero {
     width: 100%; max-width: 900px;
-    display: flex; flex-direction: column; gap: 32px;
+    display: flex; gap: 40px; align-items: flex-start;
+    animation: fadeUp 0.9s 0.15s cubic-bezier(.16,1,.3,1) both;
   }
 
-  /* =============================================
-     SHOW CARD — copy/paste this whole block
-     to add a new show
-     ============================================= */
-  .show-card {
-    display: flex; gap: 32px; align-items: flex-start;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 28px;
-    animation: fadeUp 0.9s cubic-bezier(.16,1,.3,1) both;
-    transition: border-color 0.3s;
-  }
-  .show-card:hover { border-color: rgba(255,255,255,0.22); }
-
-  /* Poster — A4 ratio (1:1.414) */
-  .show-poster {
+  /* Poster — A4 ratio */
+  .hero-poster {
     flex-shrink: 0;
-    width: 180px;
+    width: 220px;
     aspect-ratio: 1 / 1.414;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
     background: rgba(255,255,255,0.05);
     border: 1px solid var(--glass-border);
   }
-  .show-poster img {
+  .hero-poster img {
     width: 100%; height: 100%;
     object-fit: cover; display: block;
   }
 
-  /* Info */
-  .show-info {
+  .hero-info {
     flex: 1;
     display: flex; flex-direction: column;
-    gap: 12px; justify-content: center;
+    gap: 14px; justify-content: center;
+    padding-top: 8px;
   }
 
   .show-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.9rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     letter-spacing: 0.06em;
     line-height: 1;
     color: #fff;
@@ -125,52 +103,103 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.45);
-  }
-
-  .show-location {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
   }
 
   .show-description {
-    font-size: 0.95rem;
-    line-height: 1.65;
+    font-size: 1rem;
+    line-height: 1.75;
     color: rgba(255,255,255,0.7);
   }
 
-  /* Tickets button */
-  .btn-tickets {
-    align-self: flex-start;
-    margin-top: 8px;
-    position: relative;
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 13px 28px;
-    border-radius: 100px;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.88rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
-    background: linear-gradient(135deg, #f97c2b, #d4607a);
-    color: #fff;
-    border: none; outline: none;
-    overflow: hidden;
-    box-shadow: 0 6px 24px rgba(249,124,43,0.3), 0 2px 8px rgba(0,0,0,0.3);
-    transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s ease;
+  /* — Section divider — */
+  .section-divider {
+    width: 100%; max-width: 900px; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
   }
-  .btn-tickets:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 12px 36px rgba(249,124,43,0.5), 0 4px 12px rgba(0,0,0,0.4);
-  }
-  .btn-tickets:active { transform: translateY(0) scale(0.98); }
 
-  /* Back button */
+  /* — Carousel — */
+  .carousel-wrap {
+    width: 100%; max-width: 900px;
+    animation: fadeUp 0.9s 0.3s cubic-bezier(.16,1,.3,1) both;
+  }
+
+  .carousel-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 20px;
+  }
+
+  .carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.45s cubic-bezier(.16,1,.3,1);
+  }
+
+  .carousel-slide {
+    flex-shrink: 0;
+    width: 100%;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    /* ============================================================
+       Carousel images: aspect-ratio controls the frame height.
+       16/9 works well for landscape photos; adjust if needed.
+       ============================================================ */
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Nav buttons */
+  .carousel-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(13,10,18,0.75);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    z-index: 2;
+  }
+  .carousel-btn:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.25);
+    transform: translateY(-50%) scale(1.08);
+  }
+  .carousel-btn.prev { left: 12px; }
+  .carousel-btn.next { right: 12px; }
+
+  /* Dots */
+  .carousel-dots {
+    display: flex; justify-content: center; gap: 8px;
+    padding: 16px 0 4px;
+  }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .dot.active {
+    background: #f97c2b;
+    transform: scale(1.3);
+  }
+
+  /* — Back button — */
   .btn-back {
     position: relative;
     display: inline-flex; align-items: center; gap: 10px;
@@ -198,89 +227,16 @@
   }
   .btn-back:active { transform: translateY(0) scale(0.98); }
 
-  /* — Section separator — */
-  .section-divider {
-    width: 100%; max-width: 900px; height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-  }
-
-  .section-heading {
-    width: 100%; max-width: 900px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.4);
-  }
-
-  /* — Previous work grid — */
-  .prev-grid {
-    width: 100%; max-width: 900px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 20px;
-  }
-
-  /* =============================================
-     PREVIOUS WORK CARD — copy/paste this block
-     to add another past show
-     ============================================= */
-  .prev-card {
-    display: flex; flex-direction: column; gap: 12px;
-    animation: fadeUp 0.9s cubic-bezier(.16,1,.3,1) both;
-  }
-
-  .prev-poster {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1 / 1.414;
-    border-radius: 8px;
-    overflow: hidden;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--glass-border);
-    transition: border-color 0.3s, transform 0.3s ease;
-    text-decoration: none;
-  }
-  .prev-poster img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-    transition: transform 0.4s ease;
-  }
-  .prev-card:hover .prev-poster {
-    border-color: rgba(255,255,255,0.22);
-    transform: translateY(-3px);
-  }
-  .prev-card:hover .prev-poster img {
-    transform: scale(1.03);
-  }
-
-  .prev-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 0.06em;
-    line-height: 1.1;
-    color: #fff;
-  }
-
-  .prev-credits {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    line-height: 1.5;
-  }
-
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
   @media (max-width: 640px) {
-    .show-card { flex-direction: column; }
-    .show-poster { width: 100%; max-width: 200px; }
+    .hero { flex-direction: column; }
+    .hero-poster { width: 100%; max-width: 220px; }
     .header { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
-
 
   /* ===== HAMBURGER & NAV DRAWER (RIGHT) ===== */
   .hamburger {
@@ -405,75 +361,92 @@
 
 
 
-
 <main class="site">
 
+  <!-- Header -->
   <div class="header">
     <a href="/index.html" class="header-logo">
       <img src="/assets/stresstestlogo.png" alt="StressTest">
     </a>
-    <span class="page-title">What's On</span>
-    <a href="/index.html" class="btn-back">
+    <a href="/whats-on.html" class="btn-back">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M19 12H5M12 5l-7 7 7 7"/>
       </svg>
-      Back
+      What's On
     </a>
   </div>
 
   <div class="header-divider"></div>
 
-  <div class="show-list">
-
-    <!-- =============================================
-         SHOW CARD — copy/paste from here...
-         ============================================= -->
-    <div class="show-card">
-      <div class="show-poster">
-        <img src="/assets/POSTER1.png" alt="Show poster">
-      </div>
-      <div class="show-info">
-        <div class="show-title">DO ANTS DESERVE TO LIVE FOREVER?</div>
-        <div class="show-credits">Written by Kane Heath &nbsp;·&nbsp; Directed by ...</div>
-        <div class="show-location">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-            <circle cx="12" cy="9" r="2.5"/>
-          </svg>
-          University Of Chichester (tbc)
-        </div>
-        <p class="show-description">
-          What does it mean that we are here together? An unravelling exploration of all sorts of human connection and what we share without even knowing it; love, hate, the mysteries of the universe and so on.
-        </p>
-        <a href="/oops.html" class="btn-tickets">Coming Soon...</a>
-      </div>
+  <!-- ============================================================
+       HERO: poster + show info
+       EDIT: poster src, title, credits, description
+       ============================================================ -->
+  <div class="hero">
+    <div class="hero-poster">
+      <img src="/assets/PREV1.png" alt="Show poster">
     </div>
-    <!-- ...to here -->
-
+    <div class="hero-info">
+      <div class="show-title">Title of Show</div>
+      <div class="show-credits">
+        Written by John Doe<br>
+        Directed by John Doe<br>
+        Year · Venue Name
+      </div>
+      <p class="show-description">
+        A full description of the work goes here. You can write as much as you like — talk about the themes, the process, the team, what made it special. This is your space to document the work properly.
+      </p>
+    </div>
   </div>
 
   <div class="section-divider"></div>
-  <div class="section-heading">Previous Work</div>
 
-  <div class="prev-grid">
+  <!-- ============================================================
+       PHOTO CAROUSEL
+       EDIT: Add/remove <div class="carousel-slide"> blocks.
+       Name your images CAROUSEL1.png, CAROUSEL2.png etc.
+       and place them in /assets/
+       ============================================================ -->
+  <div class="carousel-wrap">
+    <div class="carousel-label">Photos</div>
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carouselTrack">
 
-    <!-- =============================================
-         PREVIOUS WORK CARD — copy/paste from here...
-         ============================================= -->
-    <div class="prev-card">
-      <a href="/WELCOMETOTHENEST.html" class="prev-poster">
-        <img src="/assets/PREV1.png" alt="Show poster">
-      </a>
-      <div class="prev-title">Welcome To The Nest (Rehearsed Reading)</div>
-      <div class="prev-credits">Written by Kane Heath<br>Directed by Lucy Sellers</div>
+        <div class="carousel-slide">
+          <img src="/assets/CAROUSEL1.png" alt="Production photo">
+        </div>
+
+        <div class="carousel-slide">
+          <img src="/assets/CAROUSEL2.png" alt="Production photo">
+        </div>
+
+        <div class="carousel-slide">
+          <img src="/assets/CAROUSEL3.png" alt="Production photo">
+        </div>
+
+        <!-- Add more slides here following the same pattern -->
+
+      </div>
+
+      <button class="carousel-btn prev" id="prevBtn" aria-label="Previous">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+      <button class="carousel-btn next" id="nextBtn" aria-label="Next">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
     </div>
-    <!-- ...to here -->
 
+    <div class="carousel-dots" id="carouselDots"></div>
   </div>
 
 </main>
 
 <script>
+
   // Setup nav email link
   (function() {
     var p = ['c','o','n','t','a','c','t'];
@@ -496,6 +469,42 @@
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeNav(); });
+
+  (function() {
+    var track = document.getElementById('carouselTrack');
+    var slides = track.querySelectorAll('.carousel-slide');
+    var dotsContainer = document.getElementById('carouselDots');
+    var current = 0;
+    var total = slides.length;
+
+    // Build dots
+    slides.forEach(function(_, i) {
+      var dot = document.createElement('div');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', function() { goTo(i); });
+      dotsContainer.appendChild(dot);
+    });
+
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dotsContainer.querySelectorAll('.dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', function() { goTo(current - 1); });
+    document.getElementById('nextBtn').addEventListener('click', function() { goTo(current + 1); });
+
+    // Swipe support
+    var startX = 0;
+    track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function(e) {
+      var diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+    });
+  })();
 </script>
+
 </body>
 </html>
