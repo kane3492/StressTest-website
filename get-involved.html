@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Involved — StressTest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange: #f97c2b;
+    --pink: #d4607a;
+    --purple: #7b5ea7;
+    --dark: #0d0a12;
+    --glass-bg: rgba(255,255,255,0.06);
+    --glass-border: rgba(255,255,255,0.12);
+    --glass-blur: blur(24px);
+  }
+
+  html, body {
+    line-height: normal;
+    width: 100%; min-height: 100%;
+    background-color: var(--dark);
+    background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ===== HAMBURGER & NAV DRAWER (RIGHT) ===== */
+  .hamburger {
+    position: fixed; top: 20px; right: 20px; z-index: 1000;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(13,10,18,0.85);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    cursor: pointer; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 5px;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    padding: 0;
+  }
+  .hamburger:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.22); transform: scale(1.08); }
+  .hamburger span {
+    display: block; width: 18px; height: 2px;
+    background: #fff; border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(.16,1,.3,1), opacity 0.3s;
+    transform-origin: center;
+  }
+
+  .nav-overlay {
+    position: fixed; inset: 0; z-index: 1001;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  .nav-overlay.open { opacity: 1; pointer-events: all; }
+
+  .nav-drawer {
+    position: fixed; top: 0; right: 0; z-index: 1002;
+    width: 280px; height: 100vh;
+    background: rgba(13,10,18,0.96);
+    border-left: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
+    display: flex; flex-direction: column;
+    padding: 28px 28px 40px;
+    gap: 0;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(.16,1,.3,1);
+  }
+  .nav-drawer.open { transform: translateX(0); }
+
+  .nav-close {
+    align-self: flex-start;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s; margin-bottom: 24px;
+  }
+  .nav-close:hover { background: rgba(255,255,255,0.12); }
+
+  .nav-logo { display: block; margin-bottom: 28px; }
+  .nav-logo img { width: 100%; max-width: 180px; height: auto; opacity: 0.9; }
+
+  .nav-divider {
+    width: 100%; height: 1px; margin-bottom: 28px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+  }
+
+  .nav-link {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: color 0.2s, padding-right 0.2s;
+  }
+  .nav-link:last-child { border-bottom: none; }
+  .nav-link:hover { color: #fff; padding-right: 8px; }
+
+  .nav-social-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 1.3rem;
+  }
+  /* ========================================== */
+
+  .site {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center;
+    padding: 48px 24px 80px;
+    gap: 48px;
+  }
+
+  /* — Header — */
+  .header {
+    width: 100%; max-width: 900px;
+    display: flex; align-items: center; justify-content: space-between;
+    animation: fadeUp 0.9s 0s cubic-bezier(.16,1,.3,1) both;
+  }
+  .header-logo img {
+    height: 36px; width: auto; display: block;
+    opacity: 0.9; transition: opacity 0.3s;
+  }
+  .header-logo img:hover { opacity: 1; }
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .header-divider {
+    width: 100%; max-width: 900px; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+    animation: fadeUp 0.9s 0.1s cubic-bezier(.16,1,.3,1) both;
+  }
+
+  /* — Opportunities list — */
+  .opportunities-wrap {
+    width: 100%; max-width: 900px;
+    display: flex; flex-direction: column; gap: 24px;
+    animation: fadeUp 0.9s 0.15s cubic-bezier(.16,1,.3,1) both;
+  }
+
+  /* =============================================
+     OPPORTUNITY CARD — copy/paste to add another
+     ============================================= */
+  .opportunity-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex; flex-direction: column; gap: 16px;
+    animation: fadeUp 0.9s cubic-bezier(.16,1,.3,1) both;
+    transition: border-color 0.3s;
+  }
+  .opportunity-card:hover { border-color: rgba(255,255,255,0.22); }
+
+  .opportunity-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.9rem;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    color: #fff;
+  }
+
+  .opportunity-meta {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .opportunity-detail {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.65); padding-bottom: 0.15em;
+    line-height: 1.8;
+  }
+
+  .opportunity-detail svg {
+    flex-shrink: 0;
+    width: 16px; height: 16px;
+    margin-top: 3px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .opportunity-description {
+    font-size: 0.95rem;
+    line-height: 2;
+    color: rgba(255,255,255,0.7);
+    padding-bottom: 0.2em;
+   display: block;}
+
+  .opportunity-actions {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .btn {
+    position: relative;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 28px;
+    border-radius: 100px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none; outline: none;
+    transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s ease;
+  }
+
+  .btn:hover { transform: translateY(-2px) scale(1.03); }
+  .btn:active { transform: translateY(0) scale(0.98); }
+
+  /* Contact button */
+  .btn-contact {
+    background: linear-gradient(135deg, #f97c2b, #d4607a);
+    color: #fff;
+    box-shadow: 0 6px 24px rgba(249,124,43,0.3), 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .btn-contact:hover {
+    box-shadow: 0 12px 36px rgba(249,124,43,0.5), 0 4px 12px rgba(0,0,0,0.4);
+  }
+
+  /* Materials button */
+  .btn-materials {
+    background: var(--glass-bg);
+    color: #fff;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .btn-materials:hover {
+    border-color: rgba(255,255,255,0.2);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* — Section divider — */
+  .section-divider {
+    width: 100%; max-width: 900px; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+  }
+
+  .cta-section {
+    width: 100%; max-width: 900px;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 16px;
+    text-align: center;
+    animation: fadeUp 0.9s 0.3s cubic-bezier(.16,1,.3,1) both;
+  }
+
+  .cta-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .cta-subtext {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.45);
+    max-width: 500px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px) {
+    .header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .opportunity-actions { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV MENU ===================== -->
+<div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+<nav class="nav-drawer" id="navDrawer">
+  <button class="nav-close" onclick="closeNav()" aria-label="Close menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 6 6 18M6 6l12 12"/>
+    </svg>
+  </button>
+  <a href="/index.html" class="nav-logo">
+    <img src="/assets/stresstestlogo.png" alt="StressTest">
+  </a>
+  <div class="nav-divider"></div>
+  <a href="/index.html" class="nav-link">Home</a>
+  <a href="/whats-on.html" class="nav-link">What's On</a>
+  <a href="/about.html" class="nav-link">About</a>
+  <a href="/get-involved.html" class="nav-link">Get Involved</a>
+  <div class="nav-divider"></div>
+  <a href="#" id="navEmailBtn" class="nav-link nav-social-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="3"/>
+      <path d="m2 7 10 7 10-7"/>
+    </svg>
+    Contact
+  </a>
+  <a href="https://instagram.com/art.stresstest" target="_blank" rel="noopener" class="nav-link nav-social-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+    </svg>
+    Instagram
+  </a>
+</nav>
+<button class="hamburger" id="hamburger" onclick="openNav()" aria-label="Open menu">
+  <span></span><span></span><span></span>
+</button>
+<!-- ===================================================== -->
+
+<main class="site">
+
+  <div class="header">
+    <a href="/index.html" class="header-logo">
+      <img src="/assets/stresstestlogo.png" alt="StressTest">
+    </a>
+    <span class="page-title">Get Involved</span>
+    <div style="width:80px"></div>
+  </div>
+
+  <div class="header-divider"></div>
+
+  <div class="opportunities-wrap">
+
+    <!-- =============================================
+         OPPORTUNITY CARD — copy/paste from here...
+         EDIT: title, location, deadline, description, contact link, materials link
+         ============================================= -->
+    <div class="opportunity-card">
+      <div class="opportunity-title">Opportunity Title</div>
+      <div class="opportunity-meta">
+        <div class="opportunity-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 7-9 13-8 13s-8-6-8-13a8 8 0 0 1 16 0Z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span>Location</span>
+        </div>
+        <div class="opportunity-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span>Deadline: Date</span>
+        </div>
+      </div>
+      <p class="opportunity-description">
+        Describe the opportunity here. What are you looking for? What experience is needed? What will they be working on?
+      </p>
+      <div class="opportunity-actions">
+        <a href="#" id="oppEmailBtn1" class="btn btn-contact">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="3"/>
+            <path d="m2 7 10 7 10-7"/>
+          </svg>
+          Contact
+        </a>
+        <a href="#" class="btn btn-materials">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="12" y1="11" x2="12" y2="17"/>
+            <polyline points="9 14 12 11 15 14"/>
+          </svg>
+          More Info
+        </a>
+      </div>
+    </div>
+    <!-- ...to here -->
+
+    <!-- To add another opportunity, copy the entire card block above and paste it here -->
+
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- CTA Section -->
+  <div class="cta-section">
+    <div class="cta-heading">Have an idea? Want to collaborate?</div>
+    <p class="cta-subtext">
+      We're always interested in working with talented creatives. Get in touch and let's talk about what we can make together.
+    </p>
+    <a href="#" id="mainEmailBtn" class="btn btn-contact">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="3"/>
+        <path d="m2 7 10 7 10-7"/>
+      </svg>
+      Get In Touch
+    </a>
+  </div>
+
+</main>
+
+<script>
+  // Setup nav email link
+  (function() {
+    var p = ['c','o','n','t','a','c','t'];
+    var d = ['s','t','r','e','s','s','t','e','s','t','.','u','k'];
+    var e = p.join('') + String.fromCharCode(64) + d.join('');
+    var btn = document.getElementById('navEmailBtn');
+    if (btn) {
+      btn.href = 'mai' + 'lto:' + e;
+    }
+  })();
+
+  // Setup all email buttons on page
+  (function() {
+    var p = ['c','o','n','t','a','c','t'];
+    var d = ['s','t','r','e','s','s','t','e','s','t','.','u','k'];
+    var e = p.join('') + String.fromCharCode(64) + d.join('');
+    var emailBtns = document.querySelectorAll('[id^="oppEmailBtn"], #mainEmailBtn');
+    emailBtns.forEach(function(btn) {
+      btn.href = 'mai' + 'lto:' + e;
+    });
+  })();
+
+  function openNav() {
+    document.getElementById('navDrawer').classList.add('open');
+    document.getElementById('navOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    document.getElementById('navDrawer').classList.remove('open');
+    document.getElementById('navOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeNav(); });
+</script>
+
+</body>
+</html>
