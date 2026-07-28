@@ -99,8 +99,6 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-
-  /* ===== HAMBURGER & NAV DRAWER (RIGHT) ===== */
   .hamburger {
     position: fixed; top: 20px; right: 20px; z-index: 1000;
     width: 44px; height: 44px; border-radius: 50%;
@@ -178,12 +176,9 @@
   .nav-link.nav-email {
     display: flex; align-items: center;
   }
-
-  /* ========================================== */
 </style>
 </head>
 <body>
-<!-- ===================== NAV MENU ===================== -->
 <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
 <nav class="nav-drawer" id="navDrawer">
   <button class="nav-close" onclick="closeNav()" aria-label="Close menu">
@@ -191,14 +186,14 @@
       <path d="M18 6 6 18M6 6l12 12"/>
     </svg>
   </button>
-  <a href="/index.html" class="nav-logo">
-    <img src="/assets/stresstestlogo.png" alt="StressTest">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/global/stresstestlogo.png" alt="StressTest">
   </a>
   <div class="nav-divider"></div>
-  <a href="/index.html" class="nav-link">Home</a>
-  <a href="/whats-on.html" class="nav-link">What's On</a>
-  <a href="/about.html" class="nav-link">About</a>
-  <a href="/get-involved.html" class="nav-link">Get Involved</a>
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="whats-on.html" class="nav-link">What's On</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="get-involved.html" class="nav-link">Get Involved</a>
   <div class="nav-divider"></div>
   <a href="#" id="navEmailBtn" class="nav-link nav-social-link">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -219,17 +214,11 @@
 <button class="hamburger" id="hamburger" onclick="openNav()" aria-label="Open menu">
   <span></span><span></span><span></span>
 </button>
-<!-- ===================================================== -->
-
-
-
-
 
 <main class="site">
-
   <div class="logo-wrap">
-    <a href="/index.html">
-      <img src="/assets/stresstestlogo.png" alt="StressTest">
+    <a href="index.html">
+      <img src="assets/global/stresstestlogo.png" alt="StressTest">
     </a>
   </div>
 
@@ -239,17 +228,15 @@
     There's nothing here just yet. Check again soon!
   </p>
 
-  <a href="/index.html" class="btn-home">
+  <a href="index.html" class="btn-home">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M19 12H5M12 5l-7 7 7 7"/>
     </svg>
     Back to Home
   </a>
-
 </main>
 
 <script>
-  // Setup nav email link
   (function() {
     var p = ['c','o','n','t','a','c','t'];
     var d = ['s','t','r','e','s','s','t','e','s','t','.','u','k'];
@@ -272,5 +259,7 @@
   }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeNav(); });
 </script>
+
+
 </body>
 </html>

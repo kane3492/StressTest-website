@@ -6,236 +6,9 @@
 <title>About — StressTest</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --orange: #f97c2b;
-    --pink: #d4607a;
-    --purple: #7b5ea7;
-    --dark: #0d0a12;
-    --glass-bg: rgba(255,255,255,0.06);
-    --glass-border: rgba(255,255,255,0.12);
-    --glass-blur: blur(24px);
-  }
-
-  html, body {
-    line-height: normal;
-    width: 100%; min-height: 100%;
-    background-color: var(--dark);
-    background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-    background-size: 28px 28px;
-    color: #fff;
-    font-family: 'Syne', sans-serif;
-    overflow-x: hidden;
-  }
-
-
-  .site {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    align-items: center;
-    padding: 48px 24px 80px;
-    gap: 48px;
-  }
-
-  /* — Header — */
-  .header {
-    width: 100%; max-width: 900px;
-    display: flex; align-items: center; justify-content: space-between;
-    animation: fadeUp 0.9s 0s cubic-bezier(.16,1,.3,1) both;
-  }
-  .header-logo img {
-    height: 36px; width: auto; display: block;
-    opacity: 0.9; transition: opacity 0.3s;
-  }
-  .header-logo img:hover { opacity: 1; }
-  .page-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem; letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.9);
-  }
-
-  .header-divider {
-    width: 100%; max-width: 900px; height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-    animation: fadeUp 0.9s 0.1s cubic-bezier(.16,1,.3,1) both;
-  }
-
-  /* — About content — */
-  .about-wrap {
-    width: 100%; max-width: 900px;
-    display: flex; flex-direction: column; gap: 48px;
-    animation: fadeUp 0.9s 0.15s cubic-bezier(.16,1,.3,1) both;
-  }
-
-  /* Big intro statement */
-  .about-intro {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.2rem, 6vw, 4rem);
-    letter-spacing: 0.05em;
-    line-height: 1.05;
-    color: #fff;
-  }
-  .about-intro span {
-    background: linear-gradient(135deg, #f97c2b, #d4607a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Body sections */
-  .about-section {
-    display: flex; flex-direction: column; gap: 16px;
-  }
-  .about-section-label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-  }
-  .about-section-body {
-    font-size: 1.05rem;
-    line-height: 2;
-    color: rgba(255,255,255,0.65);
-    max-width: 680px;
-    padding-bottom: 0.2em;
-  }
-
-  /* Team cards */
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
-
-  /* =============================================
-     TEAM CARD — copy/paste to add a person
-     ============================================= */
-  .team-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 14px;
-    padding: 24px;
-    display: flex; flex-direction: column; gap: 8px;
-    transition: border-color 0.3s, transform 0.3s;
-  }
-  .team-card:hover { border-color: rgba(255,255,255,0.22); transform: translateY(-3px); }
-
-  .team-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.2rem; letter-spacing: 0.08em;
-    color: #fff;
-  }
-  .team-role {
-    font-size: 0.72rem; font-weight: 700;
-    letter-spacing: 0.16em; text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-  }
-  .team-bio {
-    font-size: 0.88rem; line-height: 1.8;
-    color: rgba(255,255,255,0.55); line-height: 1.4; margin-bottom: 0.5em;
-    margin-top: 4px;
-  }
-
-  .section-divider {
-    width: 100%; height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (max-width: 640px) {
-    .header { flex-direction: column; align-items: flex-start; gap: 12px; }
-  }
-
-  /* ===== HAMBURGER & NAV DRAWER (RIGHT) ===== */
-  .hamburger {
-    position: fixed; top: 20px; right: 20px; z-index: 1000;
-    width: 44px; height: 44px; border-radius: 50%;
-    background: rgba(13,10,18,0.85);
-    border: 1px solid rgba(255,255,255,0.12);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-    cursor: pointer; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 5px;
-    transition: background 0.2s, border-color 0.2s, transform 0.2s;
-    padding: 0;
-  }
-  .hamburger:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.22); transform: scale(1.08); }
-  .hamburger span {
-    display: block; width: 18px; height: 2px;
-    background: #fff; border-radius: 2px;
-    transition: transform 0.3s cubic-bezier(.16,1,.3,1), opacity 0.3s;
-    transform-origin: center;
-  }
-
-  .nav-overlay {
-    position: fixed; inset: 0; z-index: 1001;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.35s ease;
-  }
-  .nav-overlay.open { opacity: 1; pointer-events: all; }
-
-  .nav-drawer {
-    position: fixed; top: 0; right: 0; z-index: 1002;
-    width: 280px; height: 100vh;
-    background: rgba(13,10,18,0.96);
-    border-left: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
-    display: flex; flex-direction: column;
-    padding: 28px 28px 40px;
-    gap: 0;
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(.16,1,.3,1);
-  }
-  .nav-drawer.open { transform: translateX(0); }
-
-  .nav-close {
-    align-self: flex-start;
-    width: 36px; height: 36px; border-radius: 50%;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: #fff; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s; margin-bottom: 24px;
-  }
-  .nav-close:hover { background: rgba(255,255,255,0.12); }
-
-  .nav-logo { display: block; margin-bottom: 28px; }
-  .nav-logo img { width: 100%; max-width: 180px; height: auto; opacity: 0.9; }
-
-  .nav-divider {
-    width: 100%; height: 1px; margin-bottom: 28px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-  }
-
-  .nav-link {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem; letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    transition: color 0.2s, padding-right 0.2s;
-  }
-  .nav-link:last-child { border-bottom: none; }
-  .nav-link:hover { color: #fff; padding-right: 8px; }
-
-  .nav-link.nav-social,
-  .nav-link.nav-email {
-    display: flex; align-items: center;
-  }
-
-  /* ========================================== */
-</style>
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body>
+<body class="page-about">
 <!-- ===================== NAV MENU ===================== -->
 <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
 <nav class="nav-drawer" id="navDrawer">
@@ -244,16 +17,16 @@
       <path d="M18 6 6 18M6 6l12 12"/>
     </svg>
   </button>
-  <a href="/index.html" class="nav-logo">
-    <img src="/assets/stresstestlogo.png" alt="StressTest">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/global/stresstestlogo.png" alt="StressTest">
   </a>
   <div class="nav-divider"></div>
-  <a href="/index.html" class="nav-link">Home</a>
-  <a href="/whats-on.html" class="nav-link">What's On</a>
-  <a href="/about.html" class="nav-link">About</a>
-  <a href="/get-involved.html" class="nav-link">Get Involved</a>
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="whats-on.html" class="nav-link">What's On</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="get-involved.html" class="nav-link">Get Involved</a>
   <div class="nav-divider"></div>
-  <a href="#" id="navEmailBtn" class="nav-link nav-social-link">
+  <a href="#" id="navEmailBtn" data-email-user="contact" data-email-domain="stresstest.uk" class="nav-link nav-social-link">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <rect x="2" y="4" width="20" height="16" rx="3"/>
       <path d="m2 7 10 7 10-7"/>
@@ -281,8 +54,8 @@
 <main class="site">
 
   <div class="header">
-    <a href="/index.html" class="header-logo">
-      <img src="/assets/stresstestlogo.png" alt="StressTest">
+    <a href="index.html" class="header-logo">
+      <img src="assets/global/stresstestlogo.png" alt="StressTest">
     </a>
     <span class="page-title">About</span>
     <!-- Spacer to balance header -->
@@ -306,9 +79,9 @@
          EDIT: Who you are section
          ============================================================ -->
     <div class="about-section">
-      <div class="about-section-label">Who We Are</div>
+      <div class="about-section-label">What is StressTest?</div>
       <p class="about-section-body">
-        StressTest is a West-Sussex based Arts 'Company' that wants to shift the meaning of a theatre company ever so slightly. A production 'label' of sorts to put new work out there; existing to develop, produce and stress test new theatre.
+        StressTest is a West-Sussex based collaborative arts platform, acting as a production 'label' to develop, produce and stress test new artwork from multiple creatives, instead of relying on a static 'theatre company' model.
       </p>
     </div>
 
@@ -316,9 +89,9 @@
          EDIT: What you do section
          ============================================================ -->
     <div class="about-section">
-      <div class="about-section-label">What We Do</div>
+      <div class="about-section-label">What does StressTest do?</div>
       <p class="about-section-body">
-        With StressTest working as a label for experimental and traditional work to wear, we aim to do anything and everything. Whether it be workshop, scratch work, throwing a script at the wall and praying to the heavens, or fully staged productions. We want to open up as many opportunities to take risks with our work under an established title; whilst celebrating impermenance and variety. We work with a number of creatives, and credited below are some of the creatives we have worked with!
+        With StressTest working as a platform for experimental and traditional work to be developed and stress tested, there is no cookie-cut plan for what types/styles of work StressTest might produce. Instead, it acts as an opportunity to take risks with our work via an established platform; whilst celebrating the impermanence and variety of art and artists in a constantly changing industry. 
       </p>
     </div>
 
@@ -329,31 +102,51 @@
          Copy/paste a .team-card block to add a person
          ============================================================ -->
     <div class="about-section">
-      <div class="about-section-label">Creatives involved</div>
+      <div class="about-section-label">Creatives who've been involved!</div>
       <div class="team-grid">
 
         <!-- TEAM CARD — copy/paste from here... -->
         <div class="team-card">
           <div class="team-name">Kane Heath</div>
           <div class="team-role">Director/Writer</div>
-          <p class="team-bio">A BA(hons) Drama Theatre and Directing student studying at the University of Chichester.</p>
+          <p class="team-bio">A BA(hons) Drama Theatre and Directing student.</p>
         </div>
 
         <div class="team-card">
           <div class="team-name">Lucy Sellers</div>
-          <div class="team-role">Director</div>
-          <p class="team-bio">A BA(hons) Drama Theatre and Directing student studying at the University of Chichester. Directed 'Welcome To The Nest.'</p>
+          <div class="team-role">Director/Creative</div>
+          <p class="team-bio">A BA(hons) Drama Theatre and Directing student. Involved in multiple projects.</p>
         </div>
 
-         <div class="team-card">
+        <div class="team-card">
           <div class="team-name">Charley Macfarlane</div>
           <div class="team-role">Creative</div>
-          <p class="team-bio">A BA(hons) Acting for Contemporary Theatre student studying at the University of Chichester. Co-Created Ginger Beer versus. Dr Stepper. @charleym_performance on Instagram.'</p>
+          <p class="team-bio">A BA(hons) Acting for Contemporary Theatre student. Involved in multiple projects. @charleym_performance on Instagram.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-name">Aimee Shields</div>
+          <div class="team-role">Creative</div>
+          <p class="team-bio">A BA(hons) Drama, Theatre and Directing student. Involved in multiple projects. @aimee_acts on Instagram.</p>
         </div>
         <!-- ...to here -->
+      </div>
+      
+        <div class="section-divider"></div>
 
- 
-
+      <!-- CTA Section -->
+      <div class="cta-section">
+        <div class="cta-heading">Want to get creative?</div>
+        <p class="cta-subtext">
+          Get in touch to learn more about how StressTest seeks creatives to collaborate with and how you can get involved!
+        </p>
+        <a href="#" id="mainEmailBtn" class="btn btn-contact">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="3"/>
+            <path d="m2 7 10 7 10-7"/>
+          </svg>
+          Get In Touch
+        </a>
       </div>
     </div>
 
@@ -361,30 +154,24 @@
 
 </main>
 
-<script>
-  // Setup nav email link
-  (function() {
-    var p = ['c','o','n','t','a','c','t'];
-    var d = ['s','t','r','e','s','s','t','e','s','t','.','u','k'];
-    var e = p.join('') + String.fromCharCode(64) + d.join('');
-    var btn = document.getElementById('navEmailBtn');
-    if (btn) {
-      btn.href = 'mai' + 'lto:' + e;
-    }
-  })();
-
-  function openNav() {
-    document.getElementById('navDrawer').classList.add('open');
-    document.getElementById('navOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeNav() {
-    document.getElementById('navDrawer').classList.remove('open');
-    document.getElementById('navOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeNav(); });
-</script>
+<script src="assets/js/site.js" defer></script>
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/global/MiniStressTestLogo.png" alt="StressTest logo" class="footer-logo">
+      <span>StressTest</span>
+    </div>
+    <p>
+      A student-led collaborative arts platform based in West Sussex. For enquiries, creative, collaborative, or other, email
+      <a href="mailto:contact@stresstest.uk">contact@stresstest.uk</a>.
+    </p>
+    <div class="footer-meta">
+      <a href="whats-on.html">What's On</a>
+      <a href="get-involved.html">Get Involved</a>
+    </div>
+    <p class="footer-note">© 2026-27 StressTest. All rights reserved.</p>
+  </div>
+</footer>
 
 </body>
 </html>
