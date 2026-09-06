@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StressTest</title>
+<title>Portfolio — StressTest</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body class="page-home">
-<!-- ===================== NAV MENU ===================== -->
+<body class="page-portfolio">
 <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
 <nav class="nav-drawer" id="navDrawer">
   <button class="nav-close" onclick="closeNav()" aria-label="Close menu">
@@ -28,14 +27,14 @@
   <a href="get-involved.html" class="nav-link">Get Involved</a>
   <div class="nav-divider"></div>
   <a href="#" id="navEmailBtn" data-email-user="contact" data-email-domain="stresstest.uk" class="nav-link nav-social-link">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <rect x="2" y="4" width="20" height="16" rx="3"/>
       <path d="m2 7 10 7 10-7"/>
     </svg>
     Contact
   </a>
   <a href="https://instagram.com/art.stresstest" target="_blank" rel="noopener" class="nav-link nav-social-link">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <rect x="2" y="2" width="20" height="20" rx="5"/>
       <circle cx="12" cy="12" r="4"/>
       <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
@@ -46,68 +45,46 @@
 <button class="hamburger" id="hamburger" onclick="openNav()" aria-label="Open menu">
   <span></span><span></span><span></span>
 </button>
-<!-- ===================================================== -->
-
-
-
-
 
 <main class="site">
-  <div class="header home-header">
+  <div class="header">
     <a href="index.html" class="header-logo">
       <img src="assets/global/stresstestlogo.png" alt="StressTest">
     </a>
-    <span class="page-title">Home</span>
-    <div class="home-header-spacer" aria-hidden="true"></div>
+    <span class="page-title">Portfolio</span>
+    <div style="width:80px"></div>
   </div>
 
-  <div class="header-divider home-header-divider"></div>
+  <div class="header-divider"></div>
 
-  <div class="card">
-
-    <div class="logo-wrap">
-      <img src="assets/global/stresstestlogo.png" alt="StressTest" draggable="false">
+  <div class="portfolio-wrap">
+    <div class="portfolio-intro">
+      <div class="section-heading">Previous Work</div>
+      <p>Previous projects stress-tested by StressTest can be browsed here in our portfolio! (No Generative AI was used to make ANY art made by StressTest.)</p>
     </div>
 
-    <div class="divider"></div>
+    <div class="prev-grid">
+      <div class="prev-card">
+        <a href="WELCOMETOTHENEST.html" class="prev-poster">
+          <img src="assets/whats-on/PREV1.png" alt="Welcome To The Nest poster">
+        </a>
+        <div class="prev-title">Welcome To The Nest (Rehearsed Reading)</div>
+        <div class="prev-credits">Written by Kane Heath<br>Directed by Lucy Sellers</div>
+      </div>
 
-    <nav class="home-actions" aria-label="Explore StressTest">
-      <a href="whats-on.html" class="home-link home-link-featured home-link-orange">
-        <span class="home-link-kicker">On now</span>
-        <strong>What's On</strong>
-      </a>
-
-      <a href="portfolio.html" class="home-link home-link-featured home-link-cyan">
-        <span class="home-link-kicker">Previous work</span>
-        <strong>Portfolio</strong>
-      </a>
-
-      <a href="about.html" class="home-link home-link-small">
-        <span class="home-link-kicker">Find out more</span>
-        <strong>About</strong>
-      </a>
-
-      <a href="get-involved.html" class="home-link home-link-small">
-        <span class="home-link-kicker">Opportunities</span>
-        <strong>Get Involved</strong>
-      </a>
-
-      <a href="https://instagram.com/art.stresstest" target="_blank" rel="noopener" class="home-link home-link-small">
-        <span class="home-link-kicker">Instagram</span>
-        <strong>@art.stresstest</strong>
-      </a>
-
-    </nav>
-
-    <a href="#" id="emailBtn" data-email-user="contact" data-email-domain="stresstest.uk" data-email-text-target="emailText" class="home-contact-link">
-      <span class="home-link-kicker">Contact</span>
-      <strong id="emailText"></strong>
-    </a>
+      <div class="prev-card">
+        <a href="GINGERBEERDRSTEPPER.html" class="prev-poster">
+          <img src="assets/whats-on/POSTER2.png" alt="Ginger Beer versus Dr. Stepper poster">
+        </a>
+        <div class="prev-title">Ginger Beer versus Dr. Stepper</div>
+        <div class="prev-credits">Created by Kane Heath<br>And Charley Macfarlane</div>
+      </div>
+    </div>
   </div>
 </main>
 
 <script src="assets/js/site.js" defer></script>
-  <footer class="site-footer">
+<footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="assets/global/MiniStressTestLogo.png" alt="StressTest logo" class="footer-logo">
@@ -117,16 +94,14 @@
       A student-led collaborative arts platform based in West Sussex. For enquiries; creative, collaborative, or other, email
       <a href="mailto:contact@stresstest.uk">contact@stresstest.uk</a>.
     </p>
-        
     <div class="footer-meta">
       <a href="whats-on.html">What's On</a>
-       <a href="portfolio.html">Portfolio</a>
+      <a href="portfolio.html">Portfolio</a>
       <a href="get-involved.html">Get Involved</a>
     </div>
     <p class="footer-note">© 2026-27 StressTest. All rights reserved.</p>
     <p class="footer-note">No Generative AI was used to create any art made by StressTest.</p>
   </div>
 </footer>
-
 </body>
 </html>

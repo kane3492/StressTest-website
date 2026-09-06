@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StressTest</title>
+<title>What's On — StressTest</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body class="page-home">
+<body class="page-whats-on">
 <!-- ===================== NAV MENU ===================== -->
 <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
 <nav class="nav-drawer" id="navDrawer">
@@ -53,57 +53,73 @@
 
 
 <main class="site">
-  <div class="header home-header">
+
+  <div class="header">
     <a href="index.html" class="header-logo">
       <img src="assets/global/stresstestlogo.png" alt="StressTest">
     </a>
-    <span class="page-title">Home</span>
-    <div class="home-header-spacer" aria-hidden="true"></div>
+    <span class="page-title">What's On?</span>
+    <div style="width:80px"></div>
   </div>
 
-  <div class="header-divider home-header-divider"></div>
+  <div class="header-divider"></div>
 
-  <div class="card">
+  <div class="show-list">
 
-    <div class="logo-wrap">
-      <img src="assets/global/stresstestlogo.png" alt="StressTest" draggable="false">
+     <!-- =============================================
+         WHAT'S ON CARD — copy/paste from here...
+         ============================================= -->
+    <div class="show-card">
+      <div class="show-poster">
+        <img src="assets/whats-on/yourdeadposter.png" alt="Show poster">
+      </div>
+      <div class="show-info">
+        <div class="show-title">YOU'RE DEAD (DON'T PANIC)</div>
+        <div class="show-credits">Written by Kane Heath &nbsp;·&nbsp; Directed by Lucy Sellers &nbsp;·&nbsp; Choregraphed by Aimee Shields</div>
+        <div class="show-location">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          The Showroom, Chichester University, Bishop Otter Campus.
+        </div>
+        <div class="show-facts">
+          <p class="show-fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <path d="M16 2v4M8 2v4M3 10h18"/>
+            </svg>
+            <strong>Spring 2027</strong><span>Dates and times to be confirmed.</span>
+          </p>
+          <p class="show-fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4V7Z"/>
+              <path d="M13 5v14" stroke-dasharray="2 2"/>
+            </svg>
+            <strong>Tickets</strong><span>Available via external ticketing platforms soon.</span>
+          </p>
+        </div>
+        <p class="show-description">
+         You’re Dead (Don’t Panic) is a fantasy stage-play rooted in Greek Mythology. It follows Iris, a wayward soul, and the Doorman to the dead, who is responsible for processing souls and encouraging a quick passing into the afterlife. Iris begins to challenge the systems that the underworld abides by, imposed by the god Hades; and in turn offers the Doorman an opportunity to reflect on his neglect and disregard of human life.
+        </p>
+        <a href="oops.html" class="btn-tickets">Watch this space...</a>
+      </div>
     </div>
+       <!-- ...to here -->
 
-    <div class="divider"></div>
-
-    <nav class="home-actions" aria-label="Explore StressTest">
-      <a href="whats-on.html" class="home-link home-link-featured home-link-orange">
-        <span class="home-link-kicker">On now</span>
-        <strong>What's On</strong>
-      </a>
-
-      <a href="portfolio.html" class="home-link home-link-featured home-link-cyan">
-        <span class="home-link-kicker">Previous work</span>
-        <strong>Portfolio</strong>
-      </a>
-
-      <a href="about.html" class="home-link home-link-small">
-        <span class="home-link-kicker">Find out more</span>
-        <strong>About</strong>
-      </a>
-
-      <a href="get-involved.html" class="home-link home-link-small">
-        <span class="home-link-kicker">Opportunities</span>
-        <strong>Get Involved</strong>
-      </a>
-
-      <a href="https://instagram.com/art.stresstest" target="_blank" rel="noopener" class="home-link home-link-small">
-        <span class="home-link-kicker">Instagram</span>
-        <strong>@art.stresstest</strong>
-      </a>
-
-    </nav>
-
-    <a href="#" id="emailBtn" data-email-user="contact" data-email-domain="stresstest.uk" data-email-text-target="emailText" class="home-contact-link">
-      <span class="home-link-kicker">Contact</span>
-      <strong id="emailText"></strong>
-    </a>
   </div>
+
+  <div class="section-divider"></div>
+
+  <section class="portfolio-cta" aria-labelledby="portfolio-heading">
+    <div>
+      <div class="section-heading" id="portfolio-heading">Looking for StressTest's previous work?</div>
+    </div>
+    <a href="portfolio.html" class="btn btn-primary">Click here</a>
+  </section>
+
+  </div>
+
 </main>
 
 <script src="assets/js/site.js" defer></script>
@@ -117,10 +133,9 @@
       A student-led collaborative arts platform based in West Sussex. For enquiries; creative, collaborative, or other, email
       <a href="mailto:contact@stresstest.uk">contact@stresstest.uk</a>.
     </p>
-        
     <div class="footer-meta">
       <a href="whats-on.html">What's On</a>
-       <a href="portfolio.html">Portfolio</a>
+      <a href="portfolio.html">Portfolio</a>
       <a href="get-involved.html">Get Involved</a>
     </div>
     <p class="footer-note">© 2026-27 StressTest. All rights reserved.</p>
