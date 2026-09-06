@@ -421,6 +421,18 @@ body::before {
 .prev-card:hover .prev-poster { border-color: var(--orange); }
 .section-heading { color: var(--paper); }
 .portfolio-cta { padding: 22px 26px; }
+.portfolio-graphics { display: flex; flex-direction: column; gap: 20px; padding-top: 12px; border-top: 1px solid rgba(243,238,229,0.16); }
+.portfolio-section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; }
+.portfolio-section-heading p { max-width: 430px; color: var(--paper-muted); font-size: 0.85rem; line-height: 1.7; text-align: right; }
+.graphics-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.graphic-card { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--glass-border); border-radius: 4px; background: var(--glass-bg); transition: transform 0.25s ease, border-color 0.25s ease; }
+.graphic-card:hover { transform: translateY(-4px); border-color: var(--orange); }
+.graphic-card-wide { grid-column: auto; }
+.graphic-card img { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: contain; background: var(--dark); }
+.graphic-card-mark img { padding: 28px; object-fit: contain; background: #211e27; }
+.graphic-card figcaption { min-height: 68px; padding: 12px 14px; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+.graphic-card figcaption strong { color: var(--paper); font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.06em; line-height: 1; text-transform: uppercase; }
+.graphic-card figcaption span { color: var(--paper-muted); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
 .cta-heading { color: var(--paper); font-size: 2.2rem; }
 .cta-subtext { color: var(--paper-muted); }
 .oops-heading { color: var(--orange); font-size: clamp(3.5rem, 10vw, 7rem); }
@@ -464,12 +476,18 @@ body::before {
   .portfolio-cta { align-items: flex-start; flex-direction: column; }
   .portfolio-cta .btn { width: 100%; }
   .site-footer { width: min(calc(100% - 32px), 1080px); }
+  .portfolio-section-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .portfolio-section-heading p { text-align: left; }
+  .graphics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .graphic-card-wide { grid-column: auto; }
 }
 @media (max-width: 480px) {
   .hamburger { top: 16px; right: 16px; }
   .about-intro { font-size: clamp(3rem, 17vw, 5.2rem); }
   .opportunity-card, .show-card, .template-section, .page-placeholder .panel { padding: 20px; }
   .show-title { font-size: 2.8rem; }
+  .graphics-grid { grid-template-columns: 1fr; }
+  .graphic-card-wide { grid-column: auto; }
 }
 
 /* Workshop material page */
