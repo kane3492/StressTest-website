@@ -422,8 +422,8 @@ body::before {
 .section-heading { color: var(--paper); }
 .portfolio-cta { padding: 22px 26px; }
 .portfolio-graphics { display: flex; flex-direction: column; gap: 20px; padding-top: 12px; border-top: 1px solid rgba(243,238,229,0.16); }
-.portfolio-section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; }
-.portfolio-section-heading p { max-width: 430px; color: var(--paper-muted); font-size: 0.85rem; line-height: 1.7; text-align: right; }
+.portfolio-section-heading { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.portfolio-section-heading p { max-width: 760px; color: var(--paper-muted); font-size: 0.85rem; line-height: 1.7; text-align: left; }
 .graphics-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: start; }
 .graphic-card { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--glass-border); border-radius: 4px; background: var(--glass-bg); transition: transform 0.25s ease, border-color 0.25s ease; }
 .graphic-card:hover { transform: translateY(-4px); border-color: var(--orange); }
@@ -476,8 +476,6 @@ body::before {
   .portfolio-cta { align-items: flex-start; flex-direction: column; }
   .portfolio-cta .btn { width: 100%; }
   .site-footer { width: min(calc(100% - 32px), 1080px); }
-  .portfolio-section-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
-  .portfolio-section-heading p { text-align: left; }
   .graphics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .graphic-card-wide { grid-column: auto; }
 }
@@ -495,8 +493,6 @@ body::before {
   .page-portfolio .header { align-items: center; }
   .page-portfolio .header .page-title { align-self: auto; width: auto; text-align: left; }
   .page-portfolio .header > div[style] { display: block; }
-  .page-portfolio .portfolio-section-heading { align-items: baseline; flex-direction: row; gap: 24px; }
-  .page-portfolio .portfolio-section-heading p { text-align: right; }
   .page-portfolio .graphics-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
